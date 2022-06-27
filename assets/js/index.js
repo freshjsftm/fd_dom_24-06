@@ -1,5 +1,20 @@
 "use strict";
 
+const secondHandler = ()=>{
+  console.log('2');
+  test.removeEventListener('click', secondHandler);
+  test.disabled = true;
+}
+const test = document.getElementById('test')
+test.addEventListener('click', ()=>(console.log('1')));
+test.addEventListener('click', secondHandler);
+// if(Math.random()>0.5){
+//   test.removeEventListener('click', secondHandler);
+// }
+
+//test.dispatchEvent(new MouseEvent('click'))
+
+
 const imagesDB = [
   "https://upload.wikimedia.org/wikipedia/commons/5/5e/Pembroke_Welsh_Corgi_in_Grass.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Pembroke_Welsh_Corgi_dog.jpg/767px-Pembroke_Welsh_Corgi_dog.jpg",
