@@ -1,18 +1,16 @@
 "use strict";
+//написать скрипт, который разрешает 
+//кликать по кнопке не более 3 раз
 
-const secondHandler = ()=>{
-  console.log('2');
-  test.removeEventListener('click', secondHandler);
-  test.disabled = true;
-}
 const test = document.getElementById('test')
-test.addEventListener('click', ()=>(console.log('1')));
-test.addEventListener('click', secondHandler);
-// if(Math.random()>0.5){
-//   test.removeEventListener('click', secondHandler);
-// }
+//реализовать замыкание!!!
+let amount = 0; //closure
+const btnHandler = () =>{
+  //увеличиваем amount, выводим его в консоль
+  //проверяем, если равен 3 -> удаляем обрабтчик
+}
+test.addEventListener('click', btnHandler);
 
-//test.dispatchEvent(new MouseEvent('click'))
 
 
 const imagesDB = [
