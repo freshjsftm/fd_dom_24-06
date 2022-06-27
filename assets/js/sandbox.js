@@ -1,16 +1,17 @@
-'use strict';
+"use strict";
 
-let value = 10;
-function log(){
-  console.log('function log: ', value)
+function createCounter(initial) {
+  let i = initial;//closure
+  return function counter() {
+    i++;
+    return i;
+  };
 }
 
-function wrapper(){
-  let value = 20;
-  console.log('function wrapper: ', value)//20
+const counter1 = createCounter(10);
+//debugger
+counter1()
+counter1()
+console.log(counter1())
 
-  log();//10
-}
-wrapper();
-
-console.log('after: ', value)
+const counter2 = createCounter(100);
