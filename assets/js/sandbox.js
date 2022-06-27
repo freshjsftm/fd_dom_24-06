@@ -1,21 +1,14 @@
 "use strict";
-
-function createCounter(initial) {
-  let i = initial;//closure
-  return {
-    increment(){
-      return ++i;
-    },
-    decrement(){
-      return --i;
-    }
-  }
-}
-let i = 44;
-const counter1 = createCounter(10);
+/*
+написать функцию  createAdder(n)
+которая возвращает другую функцию
+возвращенная функция должна принимать 
+аргумент m  
+и прибавлять его к n
+*/
+const createAdder = (n) => (m) => (n += m);
 //debugger
-counter1.increment()
-counter1.increment()
-console.log(counter1.increment())
-
-const counter2 = createCounter(100);
+const adder = createAdder(10);
+console.log(adder(4));
+console.log(adder(4));
+console.log(adder(4));
