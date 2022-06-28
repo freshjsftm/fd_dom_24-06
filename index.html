@@ -5,15 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM</title>
-    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- <link rel="stylesheet" href="./assets/css/reset.css" /> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script defer src="./assets/js/Slider.js"></script>
     <!-- <script defer src="./assets/js/sandbox.js"></script> -->
     <script defer src="./assets/js/index.js"></script>
   </head>
   <body>
-    <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes" data-port="5001" data-port-security="5023">sign in</a>
-    <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes" data-port="5003" data-port-security="5024">sign up</a>
-    <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes" data-port="5004" data-port-security="5025">sign out</a>
+
+    <!-- по клику(или наведению) менять содержимое кнопок местами -->
+    <button class="btn">OPEN</button>
+    <button class="btn">CLOSE</button>
+    
+
+
+    <div id="root" style="height: 80vh; border:2px solid;">
+      <button data-color="red">красный</button>
+      <button data-color="blue">blue</button>
+      <button data-color="orange">orange</button>
+      <button data-color="pink">pink</button>
+      <button data-color="teal">teal</button>      
+   </div>
   </body>
 </html>
