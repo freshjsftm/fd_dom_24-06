@@ -1,21 +1,20 @@
 "use strict";
 
-const test = document.getElementById('test')
+const ankors = document.links; //images forms links
+console.log(ankors)
 
-
-const btnHandler = (e) =>{
-  //e.cancelBubble = true;
-  e.stopPropagation();
-  console.group()
-  console.log(e.target)//на ком произошло событие
-  console.log(e.currentTarget)//чей обработчик отработал
-  console.groupEnd();
+const ankorHandler = (e)=>{
+  e.preventDefault();
+  //e.target.dataset.portSecurity = '7777'
+  console.log(e.target.dataset.portSecurity)
 }
-test.addEventListener('click', ()=>{console.log(1111)}, {capture:true, once:true});
-test.addEventListener('click', btnHandler, {capture:true});
-window.addEventListener('click', btnHandler);
-document.addEventListener('click', btnHandler, {capture:true});
-document.body.addEventListener('click', btnHandler);
+
+for (const ankor of ankors) {
+  ankor.addEventListener('click', ankorHandler)
+}
+
+
+
 
 
 
