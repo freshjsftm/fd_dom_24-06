@@ -16,6 +16,7 @@ function createActorsCard(actor){
 
   const cardInitials = document.createElement('div');
   cardInitials.classList.add('card-initials');
+  cardInitials.style.backgroundColor = stringToColour(actor.name);
   cardInitials.append(document.createTextNode(actor.name[0]));//HW
 
   const cardPhoto = document.createElement('img');
@@ -43,4 +44,17 @@ cardsContainer.append(...HTMLCollectionActors);
 
 function handlePhotoError({target}){
   target.remove();
+}
+
+function stringToColour(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  let colour = '#';
+  for (let i = 0; i < 3; i++) {
+    const value = (hash >> (i * 8)) & 0xFF;
+    colour += ('00' + value.toString(16)).slice(-2);
+  }
+  return colour;
 }
