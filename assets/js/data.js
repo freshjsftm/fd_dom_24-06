@@ -1,10 +1,10 @@
 const actors = [
   {
     id: 1,
-    name: "Tom Cruise",
+    name: "",
     birthdate: "July 3, 1962",
     photo:
-      "https://www.filmibeat.com/img/popcorn/profile_photos/tom-cruise-20190610151455-4602.jp",
+      "https://www.filmibeat.com/img/popcorn/profile_photos/tom-cruise-20190610151455-4602.jpg",
   },
   {
     id: 2,
