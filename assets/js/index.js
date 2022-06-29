@@ -11,10 +11,20 @@ function createActorsCard(actor){
   const cardContainer = document.createElement('article');
   cardContainer.classList.add('card-container');
 
+  const cardPhotoWrapper = document.createElement('div');
+  cardPhotoWrapper.classList.add('card-photo-wrapper');
+
+  const cardInitials = document.createElement('div');
+  cardInitials.classList.add('card-initials');
+  cardInitials.append(document.createTextNode(actor.name[0]));//HW
+
   const cardPhoto = document.createElement('img');
   cardPhoto.classList.add('card-photo');
   cardPhoto.setAttribute('src', actor.photo);
   cardPhoto.setAttribute('alt', actor.name);
+  cardPhoto.addEventListener('error', handlePhotoError)
+
+  cardPhotoWrapper.append(cardInitials, cardPhoto)
 
   const cardName = document.createElement('h2');
   cardName.classList.add('card-name');
@@ -24,9 +34,13 @@ function createActorsCard(actor){
   cardInfo.classList.add('card-info');
   cardInfo.append(document.createTextNode(actor.birthdate));
 
-  cardContainer.append(cardPhoto, cardName, cardInfo);
+  cardContainer.append(cardPhotoWrapper, cardName, cardInfo);
   HTMLCard.append(cardContainer);
   return HTMLCard;
 } 
 
 cardsContainer.append(...HTMLCollectionActors);
+
+function handlePhotoError({target}){
+  target.remove();
+}

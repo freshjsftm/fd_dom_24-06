@@ -25,11 +25,32 @@
   margin: 10px;
 }
 .card-container{
+  width: 300px;
   border:1px solid #aaa;
 }
-.card-photo{
-  width: 300px;
+.card-photo-wrapper{
+  width: inherit;
   height: 350px;
+  position: relative;
+}
+.card-photo-wrapper > *{
+  width: inherit;
+  height: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.card-initials{ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-size: 5rem;
+}
+.card-photo{
   object-fit: cover;
   object-position: top;
 }
