@@ -5,46 +5,60 @@ const HTMLCollectionActors = actors
   .filter((actor)=>actor.name||actor.photo)
   .map((actor)=>createActorsCard(actor));
 
-function createActorsCard({id, name, birthdate, photo}){
-  const fixName = name || 'Anonim';
-  const HTMLCard = document.createElement('li');
-  HTMLCard.classList.add('card-wrapper');
+function createActorsCard(actor){
+  const {id, name, birthdate, photo} = actor;
 
-  const cardContainer = document.createElement('article');
-  cardContainer.classList.add('card-container');
+  createImage(actor);
+  const cardPhotoWrapper = createElement('div',{
+    classNames:['card-photo-wrapper'],
+    attributes:{'id':`photo-wrapper${id}`}
+  }, createInitials(actor));
 
-  const cardPhotoWrapper = document.createElement('div');
-  cardPhotoWrapper.classList.add('card-photo-wrapper');
-  cardPhotoWrapper.setAttribute('id', `photo-wrapper${id}`)
+  const cardName = createElement('h2',{classNames:['card-name']}, document.createTextNode(name || 'Anonim') );
 
+  const cardInfo = createElement('p',{classNames:['card-info']}, document.createTextNode(birthdate));
+
+  const cardContainer = createElement('article',{classNames:['card-container']},cardPhotoWrapper, cardName, cardInfo)
+
+  const HTMLCard = createElement('li',{classNames:['card-wrapper']}, cardContainer);
+
+  return HTMLCard;
+} 
+cardsContainer.append(...HTMLCollectionActors);
+/* Creaters */
+
+function createElement(tag,{classNames, attributes}, ...children){
+  const element = document.createElement(tag);
+  if(classNames.length){
+    element.classList.add(...classNames);
+  }
+
+    for (const [nameAttr, valueAttr] of Object.entries(attributes)) {
+      element.setAttribute(nameAttr, valueAttr);
+    }
+
+  element.append(...children);
+}
+
+function createInitials({name}){
   const cardInitials = document.createElement('div');
   cardInitials.classList.add('card-initials');
-  cardInitials.style.backgroundColor = stringToColour(fixName);
-  cardInitials.append(document.createTextNode(name[0] || 'NN'));//HW
-  cardPhotoWrapper.append(cardInitials)
+  cardInitials.style.backgroundColor = stringToColour(name || 'Anonim');
+  cardInitials.append(document.createTextNode(name[0] || 'NN'));
+  return cardInitials;
+}
 
+function createImage({photo, id, name}){
   const cardPhoto = document.createElement('img');
   cardPhoto.classList.add('card-photo');
   cardPhoto.setAttribute('src', photo);
-  cardPhoto.setAttribute('alt', fixName);
+  cardPhoto.setAttribute('alt', name || 'Anonim');
   cardPhoto.dataset.wrapperId = `photo-wrapper${id}`;
   cardPhoto.addEventListener('error', handlePhotoError);
   cardPhoto.addEventListener('load', handlePhotoLoad);
+  return cardPhoto;
+}
 
-  const cardName = document.createElement('h2');
-  cardName.classList.add('card-name');
-  cardName.append(document.createTextNode(fixName));
-
-  const cardInfo = document.createElement('p');
-  cardInfo.classList.add('card-info');
-  cardInfo.append(document.createTextNode(birthdate));
-
-  cardContainer.append(cardPhotoWrapper, cardName, cardInfo);
-  HTMLCard.append(cardContainer);
-  return HTMLCard;
-} 
-
-cardsContainer.append(...HTMLCollectionActors);
 /* Handles */
 function handlePhotoError({target}){
   target.remove();
