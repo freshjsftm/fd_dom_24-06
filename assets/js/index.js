@@ -20,10 +20,19 @@ function createActorsCard(actor) {
     document.createTextNode(birthdate)
   );
 
+  const createWrapperPhoto = createElement(
+    "div",
+    {
+      classNames: ["card-photo-wrapper"],
+      attributes: { id: `photo-wrapper${actor.id}` },
+    },
+    createInitials(actor)
+  );
+
   const cardContainer = createElement(
     "article",
     { classNames: ["card-container"] },
-    createWrapperPhoto(actor),
+    createWrapperPhoto,
     cardName,
     cardInfo
   );
@@ -37,28 +46,20 @@ function createActorsCard(actor) {
 
   return HTMLCard;
 }
-//debugger
+
 cardsContainer.append(...HTMLCollectionActors);
 /* Creaters */
 
-function createElement(tag, { classNames}, ...children) {
+function createElement(tag, { classNames = [], attributes = {} }, ...children) {
   const element = document.createElement(tag);
   if (classNames.length) {
     element.classList.add(...classNames);
   }
-  // for (const [nameAttr, valueAttr] of Object.entries(attributes)) {
-  //   element.setAttribute(nameAttr, valueAttr);
-  // }
+  for (const [nameAttr, valueAttr] of Object.entries(attributes)) {
+    element.setAttribute(nameAttr, valueAttr);
+  }
   element.append(...children);
   return element;
-}
-
-function createWrapperPhoto(actor){
-  const cardPhotoWrapper = document.createElement('div');
-  cardPhotoWrapper.classList.add('card-photo-wrapper');
-  cardPhotoWrapper.setAttribute('id',`photo-wrapper${actor.id}`)
-  cardPhotoWrapper.append(createInitials(actor));
-  return cardPhotoWrapper;
 }
 
 function createInitials({ name }) {
