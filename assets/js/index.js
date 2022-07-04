@@ -6,7 +6,10 @@ const messagesContainer = document.getElementById('messages');
 form.addEventListener('submit', (e)=>{
   e.preventDefault();
   const testValue = e.target.test.value.trim();
-  if( !messages.includes(testValue) && testValue ){
+  //const pattern = /^[A-Z][a-z]{2,12} [A-Z]\.$/;
+  //files with extends: jpg, png, webp, JPG, PNG, WEBP
+  const pattern = /^.+\.(jpg|png|webp)$/i;
+  if( !messages.includes(testValue) && pattern.test(testValue) ){
     messages.push(testValue);     
     messagesContainer.append(createElement('p',{events:{'click':handleClickMessage}},testValue));
   }
