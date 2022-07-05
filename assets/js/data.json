@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Elon",
+    "age": 51,
+    "isWife": true,
+    "children": ["ch1", "ch2"],
+    "addres": {
+      "country": "USA",
+      "town": {
+        "name": "NY",
+        "ok": 123
+      }
+    },
+    "ukrPasport": null
+  },
+  {
+    "name": "Elen",
+    "age": 33,
+    "isWife": false,
+    "children": ["ch1", "ch2"],
+    "addres": {
+      "country": "USA",
+      "town": {
+        "name": "NY",
+        "ok": 123
+      }
+    },
+    "ukrPasport": null
+  }
+]
