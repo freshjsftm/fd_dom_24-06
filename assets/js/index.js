@@ -1,25 +1,18 @@
 "use strict";
 
-const user = {
-  name:"Elon",
-  age:51,
-  getName(){return this.name},
-  isWife: true,
-  children:['ch1','ch2'],
-  addres:{
-    country:'USA',
-    town:{
-      name:'NY',
-      ok:123,
-    },
-  },
-  ukrPasport: null,
-  petty: undefined,
-  [Symbol('prop symbol')]: 'prop symbol',
-}
-console.log(user)
-const serializeUser = JSON.stringify(user);
-console.log(serializeUser)
+// const promise1 = fetch('./assets/js/data.json');
+// console.log(promise1)
 
-const deserializeUser = JSON.parse(serializeUser)
-console.log(deserializeUser)
+// promise1.then((response)=>{
+//   console.log(response)
+//   const dataJson = response.json();
+//   console.log(dataJson)
+//   dataJson.then((data)=>{
+//     console.table(data)
+//   })
+// })
+
+fetch('./assets/js/data.json')
+  .then((response)=>{console.log(response); 
+    return response.json()})
+  .then((data)=>console.table(data))
