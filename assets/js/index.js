@@ -1,20 +1,25 @@
 "use strict";
 
-// const btn = document.getElementById('btn');
-// btn.addEventListener('click', btnHandler);
+const user = {
+  name:"Elon",
+  age:51,
+  getName(){return this._name},
+  isWife: true,
+  children:['ch1','ch2'],
+  addres:{
+    country:'USA',
+    town:{
+      name:'NY',
+      ok:123
+    },
+  },
+  ukrPasport: null,
+  petty: undefined,
+  [Symbol('prop symbol')]: 'prop symbol',
+}
+console.log(user)
+const serializeUser = JSON.stringify(user);
+console.log(serializeUser)
 
-// function btnHandler(){
-//   //while(true){}
-// }
-
-// console.log(1);
-// setTimeout(() => {
-//   console.log(3);
-// }, 0);
-// console.log(2);
-
-const identificator = setInterval(() => {
-  console.log(3);
-}, 500);
-
-//clearInterval(identificator);
+const deserializeUser = JSON.parse(serializeUser)
+console.log(deserializeUser)
