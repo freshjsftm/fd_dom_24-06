@@ -1,22 +1,29 @@
 "use strict";
-
-fetch('./assets/js/data.json')
-.then((response)=>response.json())
-.then((data)=>{
-  console.log(data);
-  if(data.length>2){
-    throw new Error('must be two')
+try{
+  const userInput = prompt()
+  if(isNaN(Number(userInput))){
+    throw new TypeError('must be number')
   }
-})
-.catch((error)=>{
-  document.body.append('500')
-  if(error instanceof TypeError){
-    console.log(error.message, ', check the path!')
-  }else if(error instanceof SyntaxError){
-    console.log(error.message, ', check the coma!')
-  }else{
-    console.log(error.message, '!!!!')
-  }
-})
-.finally(()=>{console.log('finally')})
+}catch {
+  console.log('err')
+}finally{
+  console.log('info')
+}
 
+//synchronous
+// try {} catch {}
+// try {} finally{}
+// try {} catch {} finally{}
+
+console.log("start");
+try {
+  console.log("try1");
+  //throw new Error("error1");
+  console.log("try2");
+} catch {
+  console.log("catch error");
+} finally {
+  console.log("finally");
+}
+
+console.log("end");
