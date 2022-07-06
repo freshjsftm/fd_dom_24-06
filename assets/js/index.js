@@ -1,29 +1,24 @@
 "use strict";
-try{
-  const userInput = prompt()
-  if(isNaN(Number(userInput))){
-    throw new TypeError('must be number')
-  }
-}catch {
-  console.log('err')
-}finally{
-  console.log('info')
+
+function loadImage(pathSrc) {
+  const image = new Image(); //<img >
+  image.src = pathSrc; //load||error //<img src='pathSrc'>
+  return new Promise((resolve, reject) => {
+    image.addEventListener("load", 
+    () => {
+      resolve(image);
+    });
+    image.addEventListener("error", 
+    () => {
+      reject(new Error("path invalid"));
+    });
+  });
 }
 
-//synchronous
-// try {} catch {}
-// try {} finally{}
-// try {} catch {} finally{}
-
-console.log("start");
-try {
-  console.log("try1");
-  //throw new Error("error1");
-  console.log("try2");
-} catch {
-  console.log("catch error");
-} finally {
-  console.log("finally");
-}
-
-console.log("end");
+loadImage("https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg")
+  .then((data)=>{
+    document.body.append(data)
+  })
+  .catch((error)=>{
+    document.body.append(error)
+  })
